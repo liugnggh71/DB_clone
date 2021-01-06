@@ -1,3 +1,7 @@
+# Code configuration shell
+*.ENV
+*.bak
+
 # Prerequisites
 *.d
 

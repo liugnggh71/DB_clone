@@ -1,0 +1,10 @@
+. ${1}_REMOTE_CLONE.ENV
+
+. ${HOME}/${CLONED_FROM_ENV}.env
+sqlplus / as sysdba <<EOF
+show pdbs
+
+CREATE USER  ${CLONE_USER_NAME} IDENTIFIED BY "${CLONE_USER_PWD}";
+GRANT CREATE SESSION, CREATE PLUGGABLE DATABASE TO ${CLONE_USER_NAME};
+grant select on dba_data_files to ${CLONE_USER_NAME};
+EOF
